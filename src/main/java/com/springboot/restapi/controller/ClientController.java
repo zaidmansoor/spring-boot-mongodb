@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.restapi.model.Client;
 import com.springboot.restapi.service.ClientService;
+import com.springboot.restapi.service.KafkaProducer;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -23,6 +24,9 @@ public class ClientController {
 	@Autowired
 	private ClientService clientService;
 	
+	@Autowired
+	private KafkaProducer producer;
+	
 	@GetMapping("/clients")
 	public List<Client> getAllEmployees() {
 		return clientService.getAllClients();
@@ -30,10 +34,13 @@ public class ClientController {
 	
 	@PostMapping("/clients")
 	public Client createEmployee(@Valid @RequestBody Client client) {
-		return clientService.createClient(client);
+		Client clientObject = clientService.createClient(client);
+		producer.sendMessage(clientObject.toString());
+		
+		return clientObject;
 	}
 	
-	@GetMapping("/client/{id}")
+	@GetMapping("/clients/{id}")
 	public ResponseEntity<Client> getEmployeeById(@PathVariable(value = "id") String clientId) 
 			throws Exception {
 		

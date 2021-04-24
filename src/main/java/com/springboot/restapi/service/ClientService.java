@@ -1,11 +1,13 @@
 package com.springboot.restapi.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.springboot.restapi.model.Client;
 import com.springboot.restapi.repository.ClientRepository;
 import java.util.List;
 
+@Service
 public class ClientService {
 	
 	@Autowired
@@ -13,7 +15,6 @@ public class ClientService {
 	
 	public Client createClient(Client client) {
 		return clientRepository.save(client);
-		
 	}
 	
 	public Client getById(String id) throws Exception {

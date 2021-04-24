@@ -1,5 +1,9 @@
 package com.springboot.restapi.model;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -8,10 +12,16 @@ public class Client {
 	@Id
 	private String id;
 	
+	@NotBlank
+    @Size(max=100)
 	private String firstName;
 	private String lastName;
-	private String email;
 	private String address;
+	
+	@Email(message = "Email should be valid")
+	private String email;
+	
+	
 	int age;
 	
 	public Client(String firstName, String lastName, String email, int age, String address) {
@@ -62,7 +72,7 @@ public class Client {
 	
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", emailId=" + email
+		return "Client [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", emailId=" + email
 				+ "]";
 	}
 

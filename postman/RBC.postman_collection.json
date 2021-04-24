@@ -1,0 +1,53 @@
+{
+	"variables": [],
+	"info": {
+		"name": "RBC",
+		"_postman_id": "e5a4286c-4452-2a0b-ae3a-14dad025a56c",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST Call to Create Client",
+			"request": {
+				"url": "http://localhost:8080/api/v1/clients",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\": \"Zaid\",\n\t\"lastName\": \"Mansoor\",\n\t\"address\": \"9495 Mississauga Rd, Brampton, ON L6X 0Z8\",\n\t\"age\": 12,\n\t\"email\": \"email@test.com\"\n\t\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET call to retrieve all clients",
+			"request": {
+				"url": "http://localhost:8080/api/v1/clients",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET call to retrieve client by id",
+			"request": {
+				"url": "http://localhost:8080/api/v1/clients/<id>",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
