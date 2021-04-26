@@ -17,6 +17,7 @@ spring.data.mongodb.uri=mongodb://localhost:27017/clients
 TODO:
 - Fix validation of data on creating a client using POST API call
 - Make KAFKA connection and topic configurable.
+- Break down the address field into sub fields e.g. AddressLine1, City, Province, Postal Code, Country etc.
 
 
 
